@@ -2,12 +2,14 @@
 import { google } from 'googleapis';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv'
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: path.join(__dirname, '../job-application-portal-463511-7e37d33c6b21.json'),
+  keyFile : path.join(__dirname, '..', process.env.GOOGLE_CREDENTIALS_FILE),
   scopes: [
     'https://www.googleapis.com/auth/drive',
     'https://www.googleapis.com/auth/spreadsheets'

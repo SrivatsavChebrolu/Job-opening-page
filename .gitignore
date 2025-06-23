@@ -51,3 +51,5 @@ coverage/
 # Other
 *.local
 *.tgz
+
+GOOGLE_CREDENTIALS_FILE=job-application-portal-463511-7e37d33c6b21.json
