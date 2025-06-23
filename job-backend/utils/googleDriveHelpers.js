@@ -1,6 +1,6 @@
 // utils/googleDriveHelpers.js
 import fs from 'fs';
-import { drive, authClient } from './googleClient.js';
+import { drive, getAuthClient } from './googleClient.js';
 
 const APPLICATIONS_FOLDER_ID = '1S_2GOyAH2P-FXHaYG97dJ3lXLyXw1Hs9';
 

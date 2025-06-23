@@ -1,22 +1,53 @@
-# Node dependencies
-**/node_modules/
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Environment variables
-**/.env
-*.env
+# Dependency directories
+node_modules/
 
-# Build output
-**/build/
-**/dist/
+# Vite and build output
+dist/
+dist-ssr/
+build/
 
-# Service account keys or sensitive files
+# Optional cache
+.cache/
+.vite/
+
+# Local env files
+.env
+.env.*     # like .env.development, .env.production
+
+# Google Cloud or Firebase credentials
 *.json
+!firebase.json             # (optional, if you want to include config only)
+job-application-portal-*.json
 
-# IDE/OS junk
-.vscode/
+# Ignore any JSON secrets
+**/*.secret.json
+**/service-account*.json
+
+# System files
 .DS_Store
 Thumbs.db
 
-# Google Cloud credentials
-job-application-portal-*.json
-*.json
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Coverage reports
+coverage/
+
+# Other
+*.local
+*.tgz

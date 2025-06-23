@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import bgImage from '../assets/photo-1504384308090-c894fdcc538e.jpeg';
 
 export default function ApplicationForm() {
   const navigate = useNavigate()
@@ -51,35 +52,43 @@ export default function ApplicationForm() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow">
-        <h2 className="text-2xl font-bold text-blue-600 mb-4">Apply for {jobTitle}</h2>
+  <div
+    className="relative min-h-screen bg-cover bg-center bg-no-repeat p-6"
+    style={{ backgroundImage: `url(${bgImage})` }}
+  >
+    {/* Light overlay */}
+    <div className="absolute inset-0 bg-white bg-opacity-40 z-0"></div>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
-          <div className="grid grid-cols-3 gap-2">
-            <input name="firstName" required onChange={handleChange} className="border p-2 rounded" placeholder="First Name" />
-            <input name="lastName" required onChange={handleChange} className="border p-2 rounded" placeholder="Last Name" />
-          </div>
+    {/* Content above overlay */}
+    <div className="relative z-10 max-w-2xl mx-auto bg-white p-8 rounded-xl shadow">
+      <h2 className="text-2xl font-bold text-[#2A2C8F] mb-4">Apply for the Role of {jobTitle}</h2>
 
-          <input name="birthDate" required type="date" onChange={handleChange} className="border p-2 rounded" />
-          <input name="email" required type="email" onChange={handleChange} className="border p-2 rounded" placeholder="Email" />
-          <input name="phone" required type="tel" onChange={handleChange} className="border p-2 rounded" placeholder="Phone Number" />
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-3 gap-2">
+          <input name="firstName" required onChange={handleChange} className="border p-2 rounded" placeholder="First Name" />
+          <input name="lastName" required onChange={handleChange} className="border p-2 rounded" placeholder="Last Name" />
+        </div>
 
-          <textarea name="coverLetter" onChange={handleChange} className="border p-2 rounded" placeholder="Cover Letter (Optional)" rows={4} />
+        <input name="birthDate" required type="date" onChange={handleChange} className="border p-2 rounded" />
+        <input name="email" required type="email" onChange={handleChange} className="border p-2 rounded" placeholder="Email" />
+        <input name="phone" required type="tel" onChange={handleChange} className="border p-2 rounded" placeholder="Phone Number" />
 
-          <label className="block mb-2 text-sm font-medium text-gray-700">Upload Resume (PDF/DOC)</label>
-          <input
-            type="file"
-            accept=".pdf,.doc,.docx"
-            onChange={handleFileChange}
-            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-            />
+        <textarea name="coverLetter" onChange={handleChange} className="border p-2 rounded" placeholder="Cover Letter (Optional)" rows={4} />
 
-          <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded">
-            Submit Application
-          </button>
-        </form>
-      </div>
+        <label className="block mb-2 text-sm font-medium text-black">Upload Resume (PDF/DOC)</label>
+        <input
+          type="file"
+          accept=".pdf,.doc,.docx"
+          onChange={handleFileChange}
+          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+        />
+
+        <button type="submit" className="bg-[#2A2C8F] hover:bg-[#24267A] text-white py-2 px-6 rounded">
+          Submit Application
+        </button>
+      </form>
     </div>
-  )
+  </div>
+)
+
 }
