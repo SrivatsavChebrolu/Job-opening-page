@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import bgImage from '../assets/photo-1504384308090-c894fdcc538e.jpeg';
+import Navbar from '../components/Navbar'
 
 export default function ApplicationForm() {
   const navigate = useNavigate()
@@ -18,6 +18,8 @@ export default function ApplicationForm() {
     resume: null,
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -29,6 +31,7 @@ export default function ApplicationForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setIsSubmitting(true)
 
     const payload = new FormData();
     payload.append("firstName", formData.firstName);
@@ -41,54 +44,110 @@ export default function ApplicationForm() {
     payload.append("jobTitle", jobTitle);
     payload.append("jobId", state?.jobId || "default-job-id");
 
-
     try {
       await axios.post('/api/apply', payload)
-      navigate('/success');
+      navigate('/success')
     } catch (err) {
-      const errorMessage = err.response?.data?.error || 'Something went wrong. Please try again.';
-      alert(errorMessage);
+      const errorMessage = err.response?.data?.error || 'Something went wrong. Please try again.'
+      alert(errorMessage)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
   return (
-  <div
-    className="relative min-h-screen bg-cover bg-center bg-no-repeat p-6"
-    style={{ backgroundImage: `url(${bgImage})` }}
-  >
-    {/* Light overlay */}
-    <div className="absolute inset-0 bg-white bg-opacity-40 z-0"></div>
+    <>
+      <Navbar />
 
-    {/* Content above overlay */}
-    <div className="relative z-10 max-w-2xl mx-auto bg-white p-8 rounded-xl shadow">
-      <h2 className="text-2xl font-bold text-[#2A2C8F] mb-4">Apply for the Role of {jobTitle}</h2>
+      <div className="min-h-screen bg-[#f9fafb] p-6 flex items-center justify-center">
+        <div className="w-full max-w-4xl bg-white p-10 rounded-xl shadow-md relative">
+          <div className="absolute top-0 left-0 h-2 w-20 bg-[#F6B000] rounded-full"></div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
-        <div className="grid grid-cols-3 gap-2">
-          <input name="firstName" required onChange={handleChange} className="border p-2 rounded" placeholder="First Name" />
-          <input name="lastName" required onChange={handleChange} className="border p-2 rounded" placeholder="Last Name" />
+          <h2 className="text-3xl font-bold text-[#2A2C8F] mb-6">
+            Apply for the Role of {jobTitle}
+          </h2>
+
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                name="firstName"
+                required
+                onChange={handleChange}
+                className="border p-3 rounded"
+                placeholder="First Name"
+                disabled={isSubmitting}
+              />
+              <input
+                name="lastName"
+                required
+                onChange={handleChange}
+                className="border p-3 rounded"
+                placeholder="Last Name"
+                disabled={isSubmitting}
+              />
+            </div>
+
+            <input
+              name="birthDate"
+              required
+              type="date"
+              onChange={handleChange}
+              className="border p-3 rounded"
+              disabled={isSubmitting}
+            />
+            <input
+              name="email"
+              required
+              type="email"
+              onChange={handleChange}
+              className="border p-3 rounded"
+              placeholder="Email"
+              disabled={isSubmitting}
+            />
+            <input
+              name="phone"
+              required
+              type="tel"
+              onChange={handleChange}
+              className="border p-3 rounded"
+              placeholder="Phone Number"
+              disabled={isSubmitting}
+            />
+
+            <textarea
+              name="coverLetter"
+              onChange={handleChange}
+              className="border p-3 rounded"
+              placeholder="Cover Letter (Optional)"
+              rows={4}
+              disabled={isSubmitting}
+            />
+
+            <label className="block text-sm font-medium text-black">
+              Upload Resume (PDF/DOC)
+            </label>
+            <input
+              type="file"
+              accept=".pdf,.doc,.docx"
+              onChange={handleFileChange}
+              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+              disabled={isSubmitting}
+            />
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`${
+                isSubmitting
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-[#2A2C8F] hover:bg-[#24267A]'
+              } text-white py-3 px-8 rounded font-medium transition`}
+            >
+              {isSubmitting ? 'Submitting Application...' : 'Submit Application'}
+            </button>
+          </form>
         </div>
-
-        <input name="birthDate" required type="date" onChange={handleChange} className="border p-2 rounded" />
-        <input name="email" required type="email" onChange={handleChange} className="border p-2 rounded" placeholder="Email" />
-        <input name="phone" required type="tel" onChange={handleChange} className="border p-2 rounded" placeholder="Phone Number" />
-
-        <textarea name="coverLetter" onChange={handleChange} className="border p-2 rounded" placeholder="Cover Letter (Optional)" rows={4} />
-
-        <label className="block mb-2 text-sm font-medium text-black">Upload Resume (PDF/DOC)</label>
-        <input
-          type="file"
-          accept=".pdf,.doc,.docx"
-          onChange={handleFileChange}
-          className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
-        />
-
-        <button type="submit" className="bg-[#2A2C8F] hover:bg-[#24267A] text-white py-2 px-6 rounded">
-          Submit Application
-        </button>
-      </form>
-    </div>
-  </div>
-)
-
+      </div>
+    </>
+  )
 }

@@ -1,32 +1,12 @@
-# 🧑‍💼 Job Application Portal
+# React + Vite
 
-A full-stack job application portal that allows admins to post jobs and applicants to apply with resumes. Built with:
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- ⚛️ React (Vite)
-- 🌐 Node.js + Express
-- 📝 Google Sheets (for storing applications)
-- ☁️ Google Drive (for storing uploaded resumes)
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 🚀 Features
+## Expanding the ESLint configuration
 
-### Admin
-- Create, edit, delete job postings
-- View existing job listings
-
-### Applicant
-- Browse available jobs
-- Submit applications with resume uploads
-- Data stored in Google Sheets and resumes in Drive
-
----
-
-## 🛠️ Tech Stack
-
-| Frontend     | Backend           | APIs / Storage     |
-|--------------|-------------------|---------------------|
-| React (Vite) | Node.js (Express) | Google Drive API |
-| TailwindCSS  |                   | Google Sheets API  |
-
----
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

@@ -1,51 +1,66 @@
 // src/components/Navbar.jsx
-import logo from '../assets/barabari_logo.png' // placeholder, update when image is ready
+import logo from '../assets/barabari_logo.png'
 import { Link } from 'react-router-dom'
-import { useState, useRef, useEffect } from 'react';
-import { Globe } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react'
+import { Mail } from 'lucide-react'
 
 export default function Navbar() {
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef(null)
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsOpen(false);
+        setIsOpen(false)
       }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
+
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between bg-white px-6 py-4 shadow">
-      <button onClick={scrollToTop} className="flex items-center space-x-3">
-        <img src={logo} alt="Company Logo" className="h-10 w-auto" />
-        <span className="text-xl font-semibold text-black">The Barabari Collective</span>
-      </button>
+    <nav className="sticky top-0 z-50 flex items-center justify-between bg-white px-10 py-6 shadow-md">
+      {/* Left side: Logo + Name + Links */}
+      <div className="flex items-center space-x-12">
+        {/* Logo + Name block */}
+        <Link to="/" className="flex items-center space-x-4">
+          <img src={logo} alt="Barabari Logo" className="h-14 w-auto" />
+          <div className="flex flex-col">
+            <span className="text-2xl font-bold text-black">The BARABARI Collective.</span>
+            <span className="text-sm text-gray-600">Taleem | Tajurba | Taqat</span>
+          </div>
+        </Link>
+
+        {/* BIG Nav links */}
+        <div className="flex space-x-10 ml-8">
+          <Link to="https://barabariprojectdonations.my.canva.site/overview-website" className="text-lg text-[#2A2C8F] hover:text-[#24267A] font-semibold transition">
+            Home
+          </Link>
+          <Link to="https://www.services.barabaricollective.org/" className="text-lg text-[#2A2C8F] hover:text-[#24267A] font-semibold transition">
+            Services
+          </Link>
+          <Link to="https://barabariprojectdonations.my.canva.site/impact-mentor-s-hub-website" className="text-lg text-[#2A2C8F] hover:text-[#24267A] font-semibold transition">
+            Mentor
+          </Link>
+        </div>
+      </div>
+
+      {/* Right side: Contact icon */}
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          onMouseEnter={() => setIsOpen(true)}
-          className="px-4 py-2 bg-white text-[#1434CB] rounded-md font-medium hover:bg-gray-100"
+          className="p-2 rounded-full hover:bg-gray-100 transition"
         >
-          <Globe className="w-5 h-5" />
+          <Mail className="w-6 h-6 text-[#2A2C8F]" />
         </button>
 
         {isOpen && (
           <div
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-            className="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg z-50"
+            className="absolute right-0 mt-3 w-64 bg-white border border-gray-200 rounded-lg shadow-lg p-4 transform origin-top-right animate-fade-slide z-50"
           >
-            <Link to="/partners" className="block px-4 py-2 hover:bg-gray-100">About us</Link>
-            <a href="https://external-site.com" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 hover:bg-gray-100">Projects</a>
-            <Link to="/language" className="block px-4 py-2 hover:bg-gray-100">News</Link>
+            <h4 className="text-md font-semibold mb-2">Contact Us</h4>
+            <p className="text-sm text-gray-700 mb-1">thebarabariproject@gmail.com</p>
+            <p className="text-sm text-gray-700">+91-8639322365</p>
           </div>
         )}
       </div>
