@@ -33,16 +33,16 @@ export default function ApplicationForm() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    const payload = new FormData();
-    payload.append("firstName", formData.firstName);
-    payload.append("lastName", formData.lastName);
-    payload.append("birthDate", formData.birthDate);
-    payload.append("email", formData.email);
-    payload.append("phone", formData.phone);
-    payload.append("coverLetter", formData.coverLetter || "");
-    payload.append("resume", formData.resume);
-    payload.append("jobTitle", jobTitle);
-    payload.append("jobId", state?.jobId || "default-job-id");
+    const payload = new FormData()
+    payload.append('firstName', formData.firstName)
+    payload.append('lastName', formData.lastName)
+    payload.append('birthDate', formData.birthDate)
+    payload.append('email', formData.email)
+    payload.append('phone', formData.phone)
+    payload.append('coverLetter', formData.coverLetter || '')
+    payload.append('resume', formData.resume)
+    payload.append('jobTitle', jobTitle)
+    payload.append('jobId', state?.jobId || 'default-job-id')
 
     try {
       await axios.post('/api/apply', payload)
@@ -60,20 +60,21 @@ export default function ApplicationForm() {
       <Navbar />
 
       <div className="min-h-screen bg-[#f9fafb] p-6 flex items-center justify-center">
-        <div className="w-full max-w-4xl bg-white p-10 rounded-xl shadow-md relative">
+        <div className="w-full max-w-4xl bg-white p-10 md:p-12 rounded-2xl shadow-lg relative">
+
           <div className="absolute top-0 left-0 h-2 w-20 bg-[#F6B000] rounded-full"></div>
 
-          <h2 className="text-3xl font-bold text-[#2A2C8F] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#2A2C8F] mb-6">
             Apply for the Role of {jobTitle}
           </h2>
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 name="firstName"
                 required
                 onChange={handleChange}
-                className="border p-3 rounded"
+                className="border border-[#CBD5E1] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
                 placeholder="First Name"
                 disabled={isSubmitting}
               />
@@ -81,7 +82,7 @@ export default function ApplicationForm() {
                 name="lastName"
                 required
                 onChange={handleChange}
-                className="border p-3 rounded"
+                className="border border-[#CBD5E1] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
                 placeholder="Last Name"
                 disabled={isSubmitting}
               />
@@ -92,7 +93,7 @@ export default function ApplicationForm() {
               required
               type="date"
               onChange={handleChange}
-              className="border p-3 rounded"
+              className="border border-[#CBD5E1] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               disabled={isSubmitting}
             />
             <input
@@ -100,7 +101,7 @@ export default function ApplicationForm() {
               required
               type="email"
               onChange={handleChange}
-              className="border p-3 rounded"
+              className="border border-[#CBD5E1] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               placeholder="Email"
               disabled={isSubmitting}
             />
@@ -109,7 +110,7 @@ export default function ApplicationForm() {
               required
               type="tel"
               onChange={handleChange}
-              className="border p-3 rounded"
+              className="border border-[#CBD5E1] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               placeholder="Phone Number"
               disabled={isSubmitting}
             />
@@ -117,20 +118,20 @@ export default function ApplicationForm() {
             <textarea
               name="coverLetter"
               onChange={handleChange}
-              className="border p-3 rounded"
+              className="border border-[#CBD5E1] p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               placeholder="Cover Letter (Optional)"
               rows={4}
               disabled={isSubmitting}
             />
 
-            <label className="block text-sm font-medium text-black">
+            <label className="block text-sm font-medium text-[#2A2C8F]">
               Upload Resume (PDF/DOC)
             </label>
             <input
               type="file"
               accept=".pdf,.doc,.docx"
               onChange={handleFileChange}
-              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50"
+              className="block w-full text-sm text-gray-900 border border-[#CBD5E1] rounded-lg cursor-pointer bg-gray-50"
               disabled={isSubmitting}
             />
 
@@ -140,8 +141,8 @@ export default function ApplicationForm() {
               className={`${
                 isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-[#2A2C8F] hover:bg-[#24267A]'
-              } text-white py-3 px-8 rounded font-medium transition`}
+                  : 'bg-[#F6B000] hover:bg-[#f4a900]'
+              } text-black py-3 px-8 rounded-lg font-semibold transition-transform transform hover:scale-105`}
             >
               {isSubmitting ? 'Submitting Application...' : 'Submit Application'}
             </button>
