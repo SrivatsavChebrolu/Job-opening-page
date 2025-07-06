@@ -161,6 +161,7 @@ export default function LandingPage() {
           </div>
         </section>
 
+
         {/* Testimonials Section */}
         <section className="relative py-20 px-6 bg-gradient-to-b from-[#F5F5F5] to-[#E8EBF9] text-center font-sans overflow-hidden">
           {/* Decorative actual white circles */}
