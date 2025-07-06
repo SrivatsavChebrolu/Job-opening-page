@@ -48,7 +48,7 @@ export default function Footer() {
           rel="noopener noreferrer"
           className="text-white hover:text-[#F6B000] mx-4 transition"
         >
-          Our Ecosystem
+          Ecosystem
         </a>
       </div>
 

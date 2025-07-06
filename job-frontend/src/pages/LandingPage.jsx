@@ -6,6 +6,8 @@ import bgImage from '../assets/IMG_9623.jpg';
 import convo from '../assets/IMG_9605.jpg';
 import idea from '../assets/IMG_20250623_123837.jpg';
 import final from '../assets/IMG_20250623_130040.jpg';
+import RotatingMetrics from '../components/RotatingMetrics'
+
 
 export default function LandingPage() {
   return (
@@ -101,16 +103,20 @@ export default function LandingPage() {
         </section>
 
         {/* Alignment Questions Section */}
-        <section className="relative py-20 px-6 bg-gradient-to-b from-[#F5F5F5] to-[#E8EBF9] text-center font-sans overflow-hidden">
-          {/* Decorative Shapes */}
-          <div className="absolute top-[-100px] left-[-100px] w-[300px] h-[300px] bg-[#2A2C8F] opacity-5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-[-100px] right-[-150px] w-[350px] h-[350px] bg-[#F6B000] opacity-10 rounded-full blur-3xl"></div>
+        <section className="relative bg-[#2A2C8F] py-20 px-6 overflow-hidden">
+          {/* Decorative actual white circles - more randomized */}
+          <div className="absolute top-[-50px] left-[-70px] w-[120px] h-[120px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute top-[30%] left-[-100px] w-[180px] h-[180px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute top-[15%] right-[-80px] w-[100px] h-[100px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute top-[55%] right-[10%] w-[220px] h-[220px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-[-90px] left-[20%] w-[250px] h-[250px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-[50px] right-[25%] w-[140px] h-[140px] bg-white opacity-10 rounded-full"></div>
 
-          <div className="max-w-3xl mx-auto relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#283593] mb-8">
-              Do Our <span className="text-[#F6B000] text-3xl md:text-7xl font-serif font-extrabold">Values</span> Resonate With You?
+          <div className="max-w-4xl mx-auto relative z-10 text-center space-y-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              Do Our <span className="text-5xl md:text-7xl text-[#F6B000] font-serif font-extrabold">Values</span> Resonate With You?
             </h2>
-            <ul className="text-black text-lg space-y-5">
+            <ul className="text-lg md:text-xl text-white/90 space-y-5">
               <li className="transition transform hover:scale-105">✓ Do you believe every individual deserves equitable access to opportunity?</li>
               <li className="transition transform hover:scale-105">✓ Are you passionate about creating a meaningful, lasting impact through your work?</li>
               <li className="transition transform hover:scale-105">✓ Can you envision yourself thriving within a purpose-driven, people-first organization?</li>
@@ -120,28 +126,27 @@ export default function LandingPage() {
 
         {/* Selling the Idea Section - Single Line Heading with Highlight */}
         <section className="bg-white py-20 px-6 font-sans">
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-center gap-10">
             
-            {/* Left Side - Single Transparent Image */}
-            <div className="md:w-5/12 flex justify-center">
-              <div className="w-full rounded-lg overflow-hidden transition transform hover:scale-105 shadow-lg">
+            {/* Left Side - Single Image */}
+            <div className="md:w-5/12 w-full flex justify-center">
+              <div className="w-full max-w-sm md:max-w-full rounded-lg overflow-hidden transition transform hover:scale-105 shadow-lg">
                 <img
-                  src={idea}
+                  src={convo}
                   alt="Selling the Idea"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover"
                 />
               </div>
             </div>
 
             {/* Right Side - Text */}
-            <div className="md:w-7/12 flex flex-col justify-center space-y-6">
+            <div className="md:w-7/12 w-full flex flex-col justify-center space-y-6 text-center md:text-left">
               <h2 className="text-4xl md:text-4xl font-bold text-[#2A2C8F] leading-tight mb-2">
-              More Than a Company —<br />
-              <span className="block text-4xl md:text-6xl text-[#F6B000] font-serif font-extrabold">
-                Advancing Change Together
-              </span>
+                More Than a Company —<br />
+                <span className="block text-4xl md:text-6xl text-[#F6B000] font-serif font-extrabold">
+                  Advancing Change Together
+                </span>
               </h2>
-
 
               <p className="text-black text-lg leading-relaxed">
                 The Barabari Collective champions action, empathy, and inclusive growth. Whether it’s grassroots education,
@@ -156,69 +161,63 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Value Proposition Section */}
-        <section className="py-20 px-6 bg-white text-center font-sans">
-          <div className="max-w-3xl mx-auto flex flex-col items-center space-y-6">
-
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2A2C8F] leading-tight">
-              With Every Job, We Offer<br />
-              <span className="block text-4xl md:text-7xl text-[#F6B000] font-serif font-extrabold">
-                Purpose
-              </span>
-            </h2>
-
-            <p className="text-black text-lg leading-relaxed">
-              You'll not only develop your skills and grow professionally,
-              but also contribute meaningfully to causes that matter — education, equity, and empowerment.
-            </p>
-
-            {/* Image Placeholder - keep as is for now */}
-            <div className="w-full rounded-lg overflow-hidden shadow">
-              <img
-                src={final}
-                alt="Value Proposition"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-          </div>
-        </section>
-
         {/* Testimonials Section */}
-        <section className="py-20 px-6 bg-#F5F5F5 text-center">
-          <h2 className="text-3xl font-bold text-[#283593] mb-8">Hear from our team</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-[#F6B000] p-6 rounded-lg shadow">
-              <p className="black">“Working at Barabari has helped me combine my passion for education with real impact. I’ve never felt more fulfilled.”</p>
-              <p className="mt-4 font-semibold text-black">— Priya, Program Coordinator</p>
-            </div>
-            <div className="bg-[#F6B000] p-6 rounded-lg shadow">
-              <p className="black">“From day one, I felt part of a team that’s building something meaningful. Every day here teaches me something new.”</p>
-              <p className="mt-4 font-semibold text-black">— Aarav, Outreach Lead</p>
+        <section className="relative py-20 px-6 bg-gradient-to-b from-[#F5F5F5] to-[#E8EBF9] text-center font-sans overflow-hidden">
+          {/* Decorative actual white circles */}
+          <div className="absolute top-[-50px] left-[-50px] w-[150px] h-[150px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute top-[100px] right-[-80px] w-[200px] h-[200px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-[-80px] left-[60px] w-[250px] h-[250px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-[120px] right-[100px] w-[100px] h-[100px] bg-white opacity-10 rounded-full"></div>
+
+          <div className="max-w-5xl mx-auto relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#283593] mb-8">
+              Hear from our team
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-[#F6B000] p-6 rounded-lg shadow">
+                <p className="text-black">
+                  “Working at Barabari has helped me combine my passion for education with real impact. I’ve never felt more fulfilled.”
+                </p>
+                <p className="mt-4 font-semibold text-black">— Priya, Program Coordinator</p>
+              </div>
+              <div className="bg-[#F6B000] p-6 rounded-lg shadow">
+                <p className="text-black">
+                  “From day one, I felt part of a team that’s building something meaningful. Every day here teaches me something new.”
+                </p>
+                <p className="mt-4 font-semibold text-black">— Aarav, Outreach Lead</p>
+              </div>
             </div>
           </div>
         </section>
+
+        <RotatingMetrics/>
 
         {/* Final CTA Section */}
-        <section className="bg-white py-20 px-6">
-  <div className="max-w-xl mx-auto bg-[#2A2C8F] text-white rounded-xl shadow-lg px-10 py-12 text-center space-y-6">
-    <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-      Ready to Be Part of <br />
-      <span className="text-[#F6B000] font-serif font-extrabold">Something Bigger?</span>
-    </h2>
-    <p className="text-white text-lg leading-relaxed">
-      At Barabari, your ideas, skills, and heart have a home.
-      Help us build opportunities and stories that matter —
-      together, we’ll create real change for real people.
-    </p><br></br>
-    <Link to="/jobs">
-      <button className="bg-white text-black font-semibold px-8 py-4 rounded-full hover:bg-gray-100 transition shadow">
-        Find Your Place With Us
-      </button>
-    </Link>
-  </div>
-</section>
+        <section className="relative bg-[#2A2C8F] py-20 px-6 overflow-hidden">
+          {/* Decorative actual white circles spread across */}
+          <div className="absolute top-[-50px] left-[-50px] w-[120px] h-[120px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute top-[80px] right-[-60px] w-[200px] h-[200px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-[-60px] left-[30px] w-[250px] h-[250px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-[100px] right-[80px] w-[100px] h-[100px] bg-white opacity-10 rounded-full"></div>
+          <div className="absolute top-[50%] left-[50%] w-[180px] h-[180px] bg-white opacity-5 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
 
+          <div className="max-w-4xl mx-auto relative z-10 text-center space-y-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight">
+              Ready To Add To These Numbers?
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+              Bring your skills, ideas, and passion to the table — join us in driving real change and make a difference that counts.
+            </p><br></br>
+            <Link to="/jobs">
+              <button className="inline-flex items-center gap-2 bg-[#F6B000] text-black font-semibold px-8 py-4 rounded-full hover:bg-[#DE9F00] transition shadow-lg hover:shadow-xl">
+                Make Your Contribution
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </button>
+            </Link>
+          </div>
+        </section>
 
       </main>
 

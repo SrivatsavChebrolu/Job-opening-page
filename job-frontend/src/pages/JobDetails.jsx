@@ -20,7 +20,7 @@ export default function JobDetails() {
       <>
         <Navbar />
         <div className="min-h-screen flex items-center justify-center bg-[#f5f5f5] p-10">
-          <div className="text-center text-[#283593] font-semibold text-lg">
+          <div className="text-center text-[#2A2C8F] font-semibold text-lg">
             Loading job details...
           </div>
         </div>
@@ -38,21 +38,29 @@ export default function JobDetails() {
           {/* Accent bar */}
           <div className="absolute top-0 left-0 h-2 w-20 bg-[#F6B000] rounded-full"></div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-[#283593] mb-2">
+          {/* Back to job listings link */}
+          <button
+            onClick={() => navigate('/jobs')}
+            className="mb-6 text-[#F6B000] hover:underline font-medium flex items-center space-x-1"
+          >
+            <span>← Back to Job Listings</span>
+          </button>
+
+          <h1 className="text-3xl md:text-4xl font-bold text-[#2A2C8F] mb-2">
             {job.title}
           </h1>
           <p className="text-sm md:text-base text-[#607D8B] mb-6">
             {job.location}
           </p>
 
-          <h2 className="text-xl md:text-2xl font-semibold text-[#2A2C8F] mb-2">
+          <h2 className="text-xl md:text-2xl font-semibold text-[#F6B000] mb-2">
             Description
           </h2>
           <p className="text-gray-700 mb-6 whitespace-pre-line leading-relaxed">
             {job.description}
           </p>
 
-          <h2 className="text-xl md:text-2xl font-semibold text-[#2A2C8F] mb-2">
+          <h2 className="text-xl md:text-2xl font-semibold text-[#F6B000] mb-2">
             Requirements
           </h2>
           <p className="text-gray-700 mb-8 whitespace-pre-line leading-relaxed">
@@ -60,7 +68,9 @@ export default function JobDetails() {
           </p>
 
           <button
-            onClick={() => navigate('/apply', { state: { jobTitle: job.title, jobId: job._id } })}
+            onClick={() =>
+              navigate('/apply', { state: { jobTitle: job.title, jobId: job._id } })
+            }
             className="bg-[#F6B000] hover:bg-[#f4a900] text-black px-8 py-3 rounded-lg font-semibold transition-transform transform hover:scale-105"
           >
             Apply Now

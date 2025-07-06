@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 export default function ApplicationForm() {
   const navigate = useNavigate()
@@ -62,7 +63,16 @@ export default function ApplicationForm() {
       <div className="min-h-screen bg-[#f9fafb] p-6 flex items-center justify-center">
         <div className="w-full max-w-4xl bg-white p-10 md:p-12 rounded-2xl shadow-lg relative">
 
+          {/* Accent bar */}
           <div className="absolute top-0 left-0 h-2 w-20 bg-[#F6B000] rounded-full"></div>
+
+          {/* Back link */}
+          <button
+            onClick={() => navigate('/jobs')}
+            className="mb-6 text-[#F6B000] hover:underline font-medium flex items-center space-x-1"
+          >
+            <span>← Back to Job Listings</span>
+          </button>
 
           <h2 className="text-3xl md:text-4xl font-bold text-[#2A2C8F] mb-6">
             Apply for the Role of {jobTitle}
@@ -149,6 +159,7 @@ export default function ApplicationForm() {
           </form>
         </div>
       </div>
+      <Footer />
     </>
   )
 }

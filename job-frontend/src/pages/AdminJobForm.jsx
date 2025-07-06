@@ -5,7 +5,7 @@ export default function AdminJobForm() {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    requirements: ''
+    requirements: '',
   });
   const [jobs, setJobs] = useState([]);
   const [editingId, setEditingId] = useState(null);
@@ -52,7 +52,7 @@ export default function AdminJobForm() {
     setFormData({
       title: job.title,
       description: job.description,
-      requirements: job.requirements
+      requirements: job.requirements,
     });
     setEditingId(job._id);
     setMessage(null);
@@ -72,14 +72,18 @@ export default function AdminJobForm() {
 
   return (
     <div className="max-w-4xl mx-auto p-6">
-      <div className="bg-white rounded-xl shadow p-8">
-        <h2 className="text-2xl font-bold text-[#2A2C8F] mb-6">
+      <div className="bg-white rounded-2xl shadow-lg p-8 relative">
+
+        {/* Accent Bar */}
+        <div className="absolute top-0 left-0 h-2 w-20 bg-[#F6B000] rounded-full"></div>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-[#2A2C8F] mb-6">
           {editingId ? 'Edit Job Posting' : 'Post a New Job'}
         </h2>
 
         {message && (
           <div
-            className={`mb-4 px-4 py-2 rounded ${
+            className={`mb-4 px-4 py-3 rounded ${
               message.type === 'success'
                 ? 'bg-green-100 text-green-700'
                 : 'bg-red-100 text-red-700'
@@ -89,9 +93,9 @@ export default function AdminJobForm() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4 mb-8">
+        <form onSubmit={handleSubmit} className="space-y-5 mb-10">
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-[#2A2C8F] font-medium mb-1">
               Job Title
             </label>
             <input
@@ -99,12 +103,12 @@ export default function AdminJobForm() {
               value={formData.title}
               onChange={handleChange}
               required
-              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               placeholder="Enter job title"
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-[#2A2C8F] font-medium mb-1">
               Description
             </label>
             <textarea
@@ -112,12 +116,12 @@ export default function AdminJobForm() {
               value={formData.description}
               onChange={handleChange}
               rows={4}
-              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               placeholder="Enter job description"
             />
           </div>
           <div>
-            <label className="block text-gray-700 font-medium mb-1">
+            <label className="block text-[#2A2C8F] font-medium mb-1">
               Requirements
             </label>
             <textarea
@@ -125,7 +129,7 @@ export default function AdminJobForm() {
               value={formData.requirements}
               onChange={handleChange}
               rows={3}
-              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
+              className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#2A2C8F]"
               placeholder="Enter job requirements"
             />
           </div>
@@ -133,7 +137,7 @@ export default function AdminJobForm() {
           <div className="flex flex-wrap items-center gap-4">
             <button
               type="submit"
-              className="bg-[#2A2C8F] text-white px-6 py-2 rounded hover:bg-[#1f2175] transition"
+              className="bg-[#2A2C8F] hover:bg-[#1f2175] text-white px-8 py-3 rounded-lg font-semibold transition-transform transform hover:scale-105"
             >
               {editingId ? 'Update Job' : 'Post Job'}
             </button>
@@ -145,7 +149,7 @@ export default function AdminJobForm() {
                   setFormData({ title: '', description: '', requirements: '' });
                   setMessage(null);
                 }}
-                className="bg-gray-300 text-gray-800 px-6 py-2 rounded hover:bg-gray-400 transition"
+                className="bg-gray-200 text-gray-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-transform transform hover:scale-105"
               >
                 Cancel Edit
               </button>
@@ -155,7 +159,9 @@ export default function AdminJobForm() {
       </div>
 
       <div className="mt-10">
-        <h3 className="text-xl font-bold mb-4 text-[#2A2C8F]">Existing Jobs</h3>
+        <h3 className="text-xl md:text-2xl font-bold mb-4 text-[#2A2C8F]">
+          Existing Jobs
+        </h3>
         {jobs.length === 0 ? (
           <p className="text-gray-600">No jobs posted yet.</p>
         ) : (
@@ -163,10 +169,10 @@ export default function AdminJobForm() {
             {jobs.map((job) => (
               <li
                 key={job._id}
-                className="bg-white p-4 rounded shadow flex justify-between items-start"
+                className="bg-white p-5 rounded-xl shadow flex justify-between items-start"
               >
                 <div>
-                  <h4 className="text-lg font-semibold text-[#2A2C8F]">
+                  <h4 className="text-lg font-semibold text-[#2A2C8F] mb-1">
                     {job.title}
                   </h4>
                   <p className="text-sm text-gray-700">{job.description}</p>
