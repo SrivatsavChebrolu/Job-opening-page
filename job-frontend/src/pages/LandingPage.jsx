@@ -3,9 +3,11 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 import bgImage from '../assets/IMG_9623.jpg';
-import convo from '../assets/IMG_9605.jpg';
-import idea from '../assets/IMG_20250623_123837.jpg';
-import final from '../assets/IMG_20250623_130040.jpg';
+import convo1 from '../assets/IMG_9605.jpg';
+import convo2 from '../assets/IMG_20250623_123837.jpg';
+import change from '../assets/IMG_20250623_130040.jpg';
+import convo3 from '../assets/IMG_9602.jpg'
+import convo4 from '../assets/IMG_9048.jpg'
 import RotatingMetrics from '../components/RotatingMetrics'
 
 
@@ -17,31 +19,34 @@ export default function LandingPage() {
       <main className="flex-1">
         {/* First call-to-action button with background image */}
         <section
-          className="relative bg-cover bg-center bg-no-repeat py-32 px-6 text-center font-sans min-h-screen"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        >
-          <div className="absolute inset-0 bg-white bg-opacity-80"></div>
+  className="relative bg-cover bg-center bg-no-repeat px-6 text-center font-sans min-h-screen flex items-center justify-center"
+  style={{ backgroundImage: `url(${bgImage})` }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-white bg-opacity-80"></div>
 
-          <div className="relative z-10 max-w-5xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#2A2C8F] tracking-tight leading-tight mb-8">
-            Help Us In Making A Difference Towards
-            <br className="hidden md:block" />
-            <span className="block text-5xl md:text-7xl text-[#F6B000] font-serif font-extrabold">
-              Democratizing Digital Ownership
-            </span>
-          </h1>
+  {/* Content */}
+  <div className="relative z-10 max-w-5xl mx-auto">
+    <h1 className="text-4xl md:text-5xl font-bold text-[#2A2C8F] tracking-tight leading-tight mb-8">
+      Help Us In Making A Difference Towards
+      <br className="hidden md:block" />
+      <span className="block text-5xl md:text-7xl text-[#F6B000] font-serif font-extrabold">
+        Democratizing Digital Ownership
+      </span>
+    </h1>
 
-            <p className="text-xl md:text-2xl text-black max-w-3xl mx-auto mb-10">
-              Join us in building impactful solutions that empower communities and bridge the digital divide.
-            </p>
+    <p className="text-xl md:text-2xl text-black max-w-3xl mx-auto mb-10">
+      Join us in building impactful solutions that empower communities and bridge the digital divide.
+    </p>
 
-            <Link to="/jobs">
-              <button className="bg-[#F6B000] hover:bg-[#DE9F00] text-black text-lg md:text-xl px-8 py-4 rounded-full shadow-lg transition duration-300">
-                View Open Positions
-              </button>
-            </Link>
-          </div>
-        </section>
+    <Link to="/jobs">
+      <button className="bg-[#F6B000] hover:bg-[#DE9F00] text-black text-lg md:text-xl px-8 py-4 rounded-full shadow-lg transition duration-300">
+        View Open Positions
+      </button>
+    </Link>
+  </div>
+</section>
+
 
         {/* Intro Section - 2x2 Grid Collage with Staggered Heading */}
         <section className="bg-white py-20 px-6 font-sans">
@@ -79,22 +84,22 @@ export default function LandingPage() {
             {/* Right Side - Improved 2x2 Grid Collage */}
             <div className="md:w-7/12 grid grid-cols-2 grid-rows-2 gap-6 mt-16">
               <img
-                src={convo}
+                src={convo1}
                 alt="Top Left"
                 className="w-full h-[300px] object-cover rounded-lg transition transform hover:scale-105 shadow-lg"
               />
               <img
-                src={idea}
+                src={convo2}
                 alt="Top Right"
                 className="w-full h-[300px] object-cover rounded-lg transition transform hover:scale-105 shadow-lg"
               />
               <img
-                src={final}
+                src={convo3}
                 alt="Bottom Left"
                 className="w-full h-[300px] object-cover rounded-lg transition transform hover:scale-105 shadow-lg"
               />
               <img
-                src={final}
+                src={convo4}
                 alt="Bottom Right"
                 className="w-full h-[300px] object-cover rounded-lg transition transform hover:scale-105 shadow-lg"
               />
@@ -132,7 +137,7 @@ export default function LandingPage() {
             <div className="md:w-5/12 w-full flex justify-center">
               <div className="w-full max-w-sm md:max-w-full rounded-lg overflow-hidden transition transform hover:scale-105 shadow-lg">
                 <img
-                  src={convo}
+                  src={change}
                   alt="Selling the Idea"
                   className="w-full h-auto object-cover"
                 />

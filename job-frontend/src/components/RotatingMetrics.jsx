@@ -1,3 +1,4 @@
+// src/components/RotatingMetrics.jsx
 import { useEffect, useState } from 'react';
 
 import stateIcon from '../assets/state.svg';
@@ -65,14 +66,13 @@ export default function RotatingMetrics() {
     return () => clearInterval(interval);
   }, [metrics.length]);
 
-  const handleClick = (i) => setActiveIndex(i);
-
-  const sliceSize = 360 / metrics.length; // 72 degrees
+  const sliceSize = 360 / metrics.length; // 72°
 
   return (
     <section className="w-full px-6 py-20 bg-white">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* === Left: Title === */}
+        
+        {/* === Left === */}
         <div className="w-full md:w-1/3 text-left space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-[#2A2C8F] leading-tight">
             Together, We Create
@@ -86,53 +86,54 @@ export default function RotatingMetrics() {
           </p>
         </div>
 
-        {/* === Center: Pie Chart + Icons === */}
+        {/* === Center === */}
         <div className="w-full md:w-1/3 flex items-center justify-center">
-          <div className="relative w-[400px] h-[400px]">
-            <svg viewBox="0 0 400 400" className="w-full h-full">
-              {metrics.map((_, i) => {
-                const startAngle = i * sliceSize;
-                const endAngle = (i + 1) * sliceSize;
-                return (
-                  <path
-                    key={i}
-                    d={describeArc(200, 200, 190, startAngle, endAngle)}
-                    fill={i === activeIndex ? '#F6B000' : '#ffffff'}
-                    stroke="#ddd"
-                    strokeWidth="2"
-                    filter="drop-shadow(0 0 4px rgba(0,0,0,0.1))"
-                  />
-                );
-              })}
-            </svg>
-
-            {metrics.map((m, i) => {
+          <svg viewBox="0 0 400 400" className="w-[300px] md:w-[400px] h-auto">
+            {/* Pie slices */}
+            {metrics.map((_, i) => {
               const startAngle = i * sliceSize;
               const endAngle = (i + 1) * sliceSize;
-              const iconAngle = startAngle + sliceSize / 2; // midpoint
-
-              const pos = polarToCartesian(200, 200, 115, iconAngle);
-
               return (
-                <img
-                  key={i}
-                  src={m.icon}
-                  alt={m.label}
-                  onClick={() => handleClick(i)}
-                  className={`absolute w-12 h-12 cursor-pointer transition-transform ${
-                    i === activeIndex ? 'scale-125' : ''
-                  }`}
-                  style={{
-                    left: `${pos.x - 24}px`,
-                    top: `${pos.y - 24}px`,
-                  }}
+                <path
+                  key={`slice-${i}`}
+                  d={describeArc(200, 200, 190, startAngle, endAngle)}
+                  fill={i === activeIndex ? '#F6B000' : '#ffffff'}
+                  stroke="#ddd"
+                  strokeWidth="2"
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setActiveIndex(i)}
                 />
               );
             })}
-          </div>
+
+            {/* Icons inside SVG */}
+            {metrics.map((m, i) => {
+              const iconAngle = i * sliceSize + sliceSize / 2;
+              const pos = polarToCartesian(200, 200, 115, iconAngle);
+
+              return (
+                <image
+                key={`icon-${i}`}
+                href={m.icon}
+                width="44"
+                height="44"
+                x={pos.x - 18}
+                y={pos.y - 18}
+                onClick={() => setActiveIndex(i)}
+                style={{
+                  cursor: 'pointer',
+                  transform: i === activeIndex ? 'scale(1.20)' : 'scale(1)',
+                  transformBox: 'fill-box',
+                  transformOrigin: 'center',
+                  transition: 'transform 0.2s',
+                }}
+              />
+              );
+            })}
+          </svg>
         </div>
 
-        {/* === Right: Details === */}
+        {/* === Right === */}
         <div className="w-full md:w-1/3 text-left space-y-4">
           <h3 className="text-3xl md:text-4xl font-bold text-[#2A2C8F]">
             {metrics[activeIndex].label}
